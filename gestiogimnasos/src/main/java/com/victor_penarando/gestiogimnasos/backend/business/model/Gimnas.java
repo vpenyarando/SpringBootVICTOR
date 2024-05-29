@@ -3,15 +3,32 @@ package com.victor_penarando.gestiogimnasos.backend.business.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+@Entity
+@Table(name="GIMNASOS")
 public class Gimnas implements Serializable {
     private static final long serialVersionUID = 1L;
     
+    @Id
     private Long id;
+    
     private String nom;
     private String adreca;
-    private Double quotaMensual;
-    private Date dataInauguracio;
+    private Double preu;
+    
+    @Enumerated(EnumType.STRING)
     private Tipus tipus;
+    
+    @Temporal(TemporalType.DATE)
+    private Date dataInauguracio;
+    
     private boolean obert;
 
     public Gimnas() {
@@ -42,12 +59,12 @@ public class Gimnas implements Serializable {
         this.adreca = adreca;
     }
 
-    public Double getQuotaMensual() {
-        return quotaMensual;
+    public Double getPreu() {
+        return preu;
     }
 
-    public void setQuotaMensual(Double quotaMensual) {
-        this.quotaMensual = quotaMensual;
+    public void setPreu(Double quotaMensual) {
+        this.preu = quotaMensual;
     }
 
     public Date getDataInauguracio() {
@@ -101,7 +118,7 @@ public class Gimnas implements Serializable {
 
     @Override
     public String toString() {
-        return "Gimnas [id=" + id + ", nom=" + nom + ", adreca=" + adreca + ", quotaMensual=" + quotaMensual
+        return "Gimnas [id=" + id + ", nom=" + nom + ", adreca=" + adreca + ", preu=" + preu
                 + ", dataInauguracio=" + dataInauguracio + ", tipus=" + tipus + ", obert=" + obert + "]";
     }
 }
